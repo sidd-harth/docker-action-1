@@ -15,3 +15,5 @@ jobs:
 
     - name: Test just output the message
       uses: ./
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
