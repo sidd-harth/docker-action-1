@@ -1,24 +1,21 @@
 # Use an official minimal Ubuntu image as the base image
-FROM ubuntu:20.04-minimal
+FROM ubuntu:20.04
 
 # Set environment variables to avoid interactive prompts during installation
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=UTC
 
-# Create a working directory
-WORKDIR /usr/src/app
-
-# Copy the action's entrypoint shell script into the container
-COPY entrypoint.sh /usr/src/app/entrypoint.sh
-
-# Make the entrypoint.sh script executable
-RUN chmod +x /usr/src/app/entrypoint.sh
+# Copies your code file from your action repository to the filesystem path `/` of the container
+COPY entrypoint.sh /entrypoint.sh
 
 # Install fortune, boxes, jq (for JSON parsing), and curl (for making API requests)
 RUN apt-get update && apt-get install -y fortune boxes jq curl
 
-# Set the entrypoint to your shell script
-ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
+# Make the entrypoint.sh script executable
+RUN chmod +x /entrypoint.sh
+
+# Code file to execute when the docker container starts up (`entrypoint.sh`)
+ENTRYPOINT ["/entrypoint.sh"]
 
 # Add labels to the Docker image
 LABEL "com.github.actions.name"="Fortune Commenter"
