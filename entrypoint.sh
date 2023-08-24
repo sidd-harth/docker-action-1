@@ -4,10 +4,10 @@
 PR_NUMBER=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
 
 # Generate a random funny fortune message
-FORTUNE_MESSAGE=$(fortune -o)
+#FORTUNE_MESSAGE=$(fortune -o)
 
 # Use the "boxes" utility to format the fortune message
-BOXED_MESSAGE=$(echo "$FORTUNE_MESSAGE" | boxes)
+BOXED_MESSAGE=$(echo "abccc" | boxes)
 
 # Add a comment to the pull request
 curl -X POST \
