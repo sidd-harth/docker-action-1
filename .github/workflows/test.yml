@@ -1,5 +1,8 @@
 on:
   pull_request:
+    - opened
+    - assigned
+    - unassigned
 
 jobs:
   test:
