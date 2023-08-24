@@ -1,8 +1,9 @@
 on:
-  pull_request:
-    - opened
-    - assigned
-    - unassigned
+  pull_request: 
+        types:
+         - opened
+         - assigned
+         - unassigned
 
 jobs:
   test:
