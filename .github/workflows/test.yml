@@ -1,0 +1,13 @@
+on:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: A test job
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Test just output the message
+      uses: ./

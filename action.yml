@@ -1,0 +1,11 @@
+name: "Fortune Commenter"
+description: "Add a fortune message as a comment on new pull requests"
+branding:
+  icon: "message-circle"
+  color: "purple"
+inputs: {}
+outputs: {}
+runs:
+  using: "docker"
+  image: "Dockerfile"  
+  entrypoint: "/usr/src/app/entrypoint.sh"
