@@ -4,10 +4,11 @@ on:
          - opened
          - assigned
          - unassigned
-permissions:
-  issues: write
 jobs:
+
   test:
+    permissions:
+      issues: write   
     runs-on: ubuntu-latest
     name: A test job
     steps:
