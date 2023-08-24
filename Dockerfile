@@ -1,5 +1,9 @@
-# Use an official Alpine Linux image as the base image
-FROM alpine:3.10
+# Use an official minimal Ubuntu image as the base image
+FROM ubuntu:20.04-minimal
+
+# Set environment variables to avoid interactive prompts during installation
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=UTC
 
 # Create a working directory
 WORKDIR /usr/src/app
@@ -10,8 +14,8 @@ COPY entrypoint.sh /usr/src/app/entrypoint.sh
 # Make the entrypoint.sh script executable
 RUN chmod +x /usr/src/app/entrypoint.sh
 
-# Install fortune and boxes, and jq for JSON parsing
-RUN apk add --no-cache fortune boxes jq
+# Install fortune, boxes, jq (for JSON parsing), and curl (for making API requests)
+RUN apt-get update && apt-get install -y fortune boxes jq curl
 
 # Set the entrypoint to your shell script
 ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
