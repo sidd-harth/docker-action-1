@@ -7,11 +7,11 @@ PR_NUMBER=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
 #FORTUNE_MESSAGE=$(fortune -o)
 
 # Use the "boxes" utility to format the fortune message
-BOXED_MESSAGE=$(echo "abccc" | boxes)
+BOXED_MESSAGE=$(echo "abccc")
 
 # Add a comment to the pull request
 curl -X POST \
   -H "Authorization: Bearer $GITHUB_TOKEN" \
   -H "Content-Type: application/json" \
-  -d "{\"body\":\"\`\`\`\n$BOXED_MESSAGE\n\`\`\`\"}" \
+  -d "{\"body\":\"$BOXED_MESSAGE\"}" \
   "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/comments"
