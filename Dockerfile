@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y fortune boxes jq curl
 RUN chmod +x /entrypoint.sh
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["entrypoint.sh"]
 
 # Add labels to the Docker image
 LABEL "com.github.actions.name"="Fortune Commenter"
