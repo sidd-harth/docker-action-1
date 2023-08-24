@@ -7,8 +7,7 @@ on:
 jobs:
 
   test:
-    permissions:
-      issues: write   
+   
     runs-on: ubuntu-latest
     name: A test job
     steps:
