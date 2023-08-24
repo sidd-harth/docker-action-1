@@ -4,7 +4,8 @@ on:
          - opened
          - assigned
          - unassigned
-
+permissions:
+  issues: write
 jobs:
   test:
     runs-on: ubuntu-latest
