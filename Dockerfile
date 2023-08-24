@@ -1,5 +1,5 @@
 # Use an official minimal Ubuntu image as the base image
-FROM ubuntu:20.04-minimal
+FROM ubuntu:20.04
 
 # Set environment variables to avoid interactive prompts during installation
 ENV DEBIAN_FRONTEND=noninteractive
