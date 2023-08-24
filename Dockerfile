@@ -5,8 +5,6 @@ FROM ubuntu:20.04
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=UTC
 
-# Copies your code file from your action repository to the filesystem path `/` of the container
-COPY entrypoint.sh entrypoint.sh
 
 # Install fortune, boxes, jq (for JSON parsing), and curl (for making API requests)
 RUN apt-get update && apt-get install -y fortune boxes jq curl
@@ -14,8 +12,10 @@ RUN apt-get update && apt-get install -y fortune boxes jq curl
 # Make the entrypoint.sh script executable
 RUN chmod +x entrypoint.sh
 
+COPY entrypoint.sh /entrypoint.sh
+
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
 
 # Add labels to the Docker image
 LABEL "com.github.actions.name"="Fortune Commenter"
